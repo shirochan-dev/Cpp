@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
+#define taskname ""
 #define int long long
+
 using namespace std;
+
 struct Node {
     int x,y;
 
@@ -11,19 +14,32 @@ struct Node {
 };
 
 const int maxN = (int)(1e3);
+
 int n,m;
 int dp[maxN+5][maxN+5][2];
 Node a[maxN+5],b[maxN+5];
+
 int dist(Node A, Node B) {
     return (A.x - B.x)*(A.x - B.x) + (A.y - B.y)*(A.y - B.y);
 }
-int main() {
+
+int32_t main() {
     ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    #ifdef LOCAL
+        freopen(".inp", "r", stdin);
+        freopen(".out", "w", stdout);
+    #endif
+    #ifdef ONLINE_JUDGE
+        // freopen(taskname".inp", "r", stdin);
+        // freopen(taskname".out", "w", stdout);
+    #endif
     cin >> n >> m;
     for (int i = 1; i <= n; i++)
         cin >> a[i].x >> a[i].y;
     for (int i = 1; i <= m; i++)
         cin >> b[i].x >> b[i].y;
+    // dp[i][j][k]: visit i-th camp at HN, j-th camp at SG
+    // k = 0: now at HN, k = 1: now at SG.
     memset(dp,127,sizeof(dp));
     dp[1][0][0] = 0;
     dp[1][1][1] = dist(a[1],b[1]);
