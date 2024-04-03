@@ -1,9 +1,6 @@
 #include <bits/stdc++.h>
-#define taskname ""
 #define int long long
-
 using namespace std;
-
 struct Node {
     int x,y;
 
